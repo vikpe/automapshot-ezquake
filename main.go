@@ -35,15 +35,19 @@ func main() {
 
 	mapSettings := getMapSettingsFromFile("mapsettings.json")
 
-	for mapName, settings := range mapSettings {
-		fmt.Println(mapName, settings)
-		ctrl.CommandWithOptions(fmt.Sprintf("map %s", mapName), ezquake.CommandOptions{Timeout: time.Second * 4})
-		ctrl.CommandWithOptions(settings, ezquake.CommandOptions{Timeout: time.Millisecond * 250})
-		ctrl.CommandWithOptions("clear", ezquake.CommandOptions{Timeout: time.Millisecond * 250})
-		ctrl.CommandWithOptions("screenshot", ezquake.CommandOptions{Timeout: time.Second})
+	doCmd := func(cmd string, timeout time.Duration) {
+		ctrl.CommandWithOptions(cmd, ezquake.CommandOptions{Timeout: timeout})
 	}
 
-	// todo: collect screenshots
+	for mapName, settings := range mapSettings {
+		fmt.Println(mapName, settings)
+		doCmd(fmt.Sprintf("map %s", mapName), time.Second*4)
+		doCmd(settings, time.Millisecond*250)
+		doCmd("clear", time.Millisecond*250)
+		doCmd("screenshot", time.Second)
+	}
+
+	// todo: move screenshots to /dist
 	// todo: resize screenshots
 }
 
