@@ -6,7 +6,7 @@ import (
 
 	"github.com/joho/godotenv"
 	"github.com/urfave/cli/v2"
-	"github.com/vikpe/automapshot/internal/pkg/automapshot"
+	"github.com/vikpe/automapshot/internal/pkg/mapshot"
 )
 
 func main() {
@@ -44,7 +44,7 @@ Example:   {{.Name}} dm2 dm4 dm6
 		Version:     "__VERSION__", // updated during build workflow
 		Action: func(c *cli.Context) error {
 			// validate setup
-			mapSettings, err := automapshot.NewMapSettingsFromJsonFile("map_settings.json")
+			mapSettings, err := mapshot.NewMapSettingsFromJsonFile("map_settings.json")
 
 			if err != nil {
 				return err
@@ -57,7 +57,7 @@ Example:   {{.Name}} dm2 dm4 dm6
 			}
 
 			// create mapshots
-			client := automapshot.NewClient(
+			client := mapshot.NewClient(
 				os.Getenv("EZQUAKE_PROCESS_USERNAME"),
 				os.Getenv("EZQUAKE_BIN_PATH"),
 			)
