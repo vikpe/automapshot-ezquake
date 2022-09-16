@@ -30,3 +30,8 @@ Create mapshot for all maps defined in `map_settings.json`.
 ```shell
 automapshot all
 ```
+
+## Related projects
+
+* [QuakeWorld Mapshots](https://github.com/vikpe/qw-mapshots)
+* [QuakeWorld Hub](https://github.com/quakeworldnu/hub.quakeworld.nu) 
