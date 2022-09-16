@@ -49,6 +49,7 @@
   "ztndm3": "cam_pos 176 -944 288; cam_angles 20 135 0",
   "ztndm4": "cam_pos 1040 -32 208; cam_angles 42 140 0",
   "ztndm5": "cam_pos 128 -112 352; cam_angles 20 125 0",
+  "ztndm6": "cam_pos -336 -48 128;cam_angles 35 135 0",
   "aerowalk": "cam_pos -336 -74 388;cam_angles 90 45 180",
   "frobodm2": "cam_pos 1696 -1424 64;cam_angles -30 90 0",
   "schloss": "cam_pos 1424 -3208 480;cam_angles 20 145 0",
