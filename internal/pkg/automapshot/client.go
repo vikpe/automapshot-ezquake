@@ -8,6 +8,13 @@ import (
 	"github.com/vikpe/go-ezquake"
 )
 
+const ScreenshotConfig = "hide all; crosshair 0; sshot_autoname 1; sshot_dir mapshots"
+
+type IClientController interface {
+	Command(cmd string, options ezquake.CommandOptions)
+	CommandWithOptions(cmd string, options ezquake.CommandOptions)
+}
+
 type Client struct {
 	controller *ezquake.ClientController
 }
@@ -17,7 +24,7 @@ func NewClient(username, binPath string) *Client {
 		controller: ezquake.NewClientController(username, binPath),
 	}
 
-	client.do(`hide all; crosshair 0; sshot_autoname 1; sshot_dir mapshots"`, 50*time.Millisecond)
+	client.do(ScreenshotConfig, 50*time.Millisecond)
 	return &client
 }
 
