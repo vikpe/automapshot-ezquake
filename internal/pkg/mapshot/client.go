@@ -3,6 +3,7 @@ package mapshot
 import (
 	"errors"
 	"fmt"
+	"path/filepath"
 	"time"
 
 	"github.com/vikpe/go-ezquake"
@@ -53,10 +54,32 @@ func (c *Client) Mapshot(mapName, mapSettings string) error {
 		return errors.New("ezquake is not started")
 	}
 
-	c.do(fmt.Sprintf("map %s", mapName), 3*time.Second)
+	err := c.loadMap(mapName)
+
+	if err != nil {
+		return err
+	}
+
 	c.do(mapSettings, 50*time.Millisecond)
 	c.do("clear; wait; screenshot", 500*time.Millisecond)
 
+	return nil
+}
+
+func (c *Client) loadMap(mapName string) error {
+	assets := ezquake.NewAssetManager(filepath.Dir(c.controller.Process.Path))
+
+	if !assets.HasMap(mapName) {
+		err := assets.DownloadMap(mapName)
+
+		if err != nil {
+			return errors.New(fmt.Sprintf("%s was not found in qw/maps and could not be downloaded (%s)", mapName, ezquake.MapUrl(mapName)))
+		}
+
+		time.Sleep(time.Millisecond * 50)
+	}
+
+	c.do(fmt.Sprintf("map %s", mapName), 3*time.Second)
 	return nil
 }
 
