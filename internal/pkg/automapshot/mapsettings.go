@@ -1,4 +1,4 @@
-package mapsettings
+package automapshot
 
 import (
 	"encoding/json"
@@ -21,7 +21,7 @@ func (s MapSettings) MapNames() []string {
 	return mapNames
 }
 
-func FromJsonFile(filePath string) (MapSettings, error) {
+func NewMapSettingsFromJsonFile(filePath string) (MapSettings, error) {
 	file, err := ioutil.ReadFile(filePath)
 
 	if err != nil {
