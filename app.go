@@ -28,19 +28,19 @@ Example:   {{.Name}} dm2 dm6
 		UsageText:   "automapshot [<maps> ...]",
 		Version:     "__VERSION__", // updated during build workflow
 		Action: func(c *cli.Context) error {
-			maps := c.Args().Slice()
-
-			pfmt := prettyfmt.New("mapshot", color.FgHiCyan, "15:04:05", color.FgWhite)
 			mapSettings, err := mapsettings.FromJsonFile("map_settings.json")
 
 			if err != nil {
 				return err
 			}
 
+			maps := c.Args().Slice()
+
 			if len(maps) == 1 && "all" == maps[0] {
 				maps = mapSettings.MapNames()
 			}
 
+			pfmt := prettyfmt.New("mapshot", color.FgHiCyan, "15:04:05", color.FgWhite)
 			client := mapshot.NewClient(getEzquakeController())
 
 			for _, mapName := range maps {
