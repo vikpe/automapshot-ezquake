@@ -8,10 +8,10 @@ import (
 	"github.com/fatih/color"
 	"github.com/joho/godotenv"
 	"github.com/urfave/cli/v2"
+	"github.com/vikpe/automapshot/internal/pkg/mapsettings"
+	"github.com/vikpe/automapshot/internal/pkg/mapshot"
 	"github.com/vikpe/go-ezquake"
 	"github.com/vikpe/prettyfmt"
-	"github.com/vikpe/qw-automapshot/internal/pkg/mapsettings"
-	"github.com/vikpe/qw-automapshot/internal/pkg/mapshot"
 )
 
 func NewApp() *cli.App {
