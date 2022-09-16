@@ -1,6 +1,6 @@
 # automapshot
 
-> Automate the process of taking screenshots of QuakeWorld maps.
+> Automate screenshots of QuakeWorld maps.
 
 Uses an ezQuake client to cycle through maps, load camera settings and then take screenshots.
 
