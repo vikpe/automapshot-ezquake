@@ -3,6 +3,7 @@ package mapshot
 import (
 	"errors"
 	"fmt"
+	"log"
 	"path/filepath"
 	"time"
 
@@ -31,14 +32,18 @@ func (c *Client) Mapshots(mapNames []string, settings MapSettings) error {
 		mapNames = settings.MapNames()
 	}
 
+	log.Println("mapnames = ", mapNames)
+
 	for _, mapName := range mapNames {
 		if !settings.HasMap(mapName) {
+			log.Println("skipping map", mapName)
 			continue
 		}
 
 		err := c.Mapshot(mapName, settings[mapName])
 
 		if err != nil {
+			log.Println("error during mapshot", err.Error())
 			return err
 		}
 	}
@@ -51,14 +56,18 @@ func (c *Client) Mapshot(mapName, mapSettings string) error {
 		return errors.New("ezquake is not started")
 	}
 
+	log.Println("loading map", mapName)
 	err := c.loadMap(mapName)
 
 	if err != nil {
+		log.Println("error loading map", err.Error())
 		return err
 	}
 
 	c.do(mapSettings, 50*time.Millisecond)
 	c.do("clear; wait; screenshot", 500*time.Millisecond)
+
+	log.Println("done")
 
 	return nil
 }
@@ -81,5 +90,5 @@ func (c *Client) loadMap(mapName string) error {
 }
 
 func (c *Client) do(cmd string, timeout time.Duration) {
-	c.controller.CommandWithOptions(cmd, ezquake.CommandOptions{Delay: timeout})
+	c.controller.CommandWithOptions(cmd, ezquake.CommandOptions{Block: timeout})
 }

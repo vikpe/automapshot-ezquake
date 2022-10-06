@@ -2,6 +2,7 @@ package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 
 	"github.com/joho/godotenv"
@@ -47,12 +48,14 @@ Example:   {{.Name}} dm2 dm4 dm6
 			mapSettings, err := mapshot.NewMapSettingsFromJsonFile("map_settings.json")
 
 			if err != nil {
+				log.Println("unable to load map settings", err.Error())
 				return err
 			}
 
 			err = godotenv.Load()
 
 			if err != nil {
+				log.Println("unable to load environment variables", err.Error())
 				return err
 			}
 
