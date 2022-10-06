@@ -4,9 +4,9 @@ go 1.18
 
 require (
 	github.com/joho/godotenv v1.4.0
-	github.com/urfave/cli/v2 v2.16.3
-	github.com/vikpe/go-ezquake v0.1.5
-	golang.org/x/exp v0.0.0-20220916125017-b168a2c6b86b
+	github.com/urfave/cli/v2 v2.17.1
+	github.com/vikpe/go-ezquake v0.1.7
+	golang.org/x/exp v0.0.0-20221004215720-b9f4876ce741
 )
 
 require (
