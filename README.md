@@ -31,6 +31,13 @@ Create mapshot for all maps defined in `map_settings.json`.
 automapshot all
 ```
 
+## How to create thumbnails
+
+```shell
+ mkdir thumbs
+ mogrify  -format jpg -path thumbs -thumbnail 400x300 *.jpg
+ ```
+
 ## Related projects
 
 * [QuakeWorld Mapshots](https://github.com/vikpe/qw-mapshots)
