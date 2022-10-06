@@ -84,5 +84,5 @@ func (c *Client) loadMap(mapName string) error {
 }
 
 func (c *Client) do(cmd string, timeout time.Duration) {
-	c.controller.CommandWithOptions(cmd, ezquake.CommandOptions{Timeout: timeout})
+	c.controller.CommandWithOptions(cmd, ezquake.CommandOptions{Delay: timeout})
 }
