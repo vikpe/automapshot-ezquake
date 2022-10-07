@@ -64,8 +64,8 @@ func (c *Client) Mapshot(mapName, mapSettings string) error {
 		return err
 	}
 
-	c.do(mapSettings, 50*time.Millisecond)
-	c.do("clear; wait; screenshot", 500*time.Millisecond)
+	c.doForDuration(mapSettings, 50*time.Millisecond)
+	c.doForDuration("clear; wait; screenshot", 500*time.Millisecond)
 
 	log.Println("done")
 
@@ -85,10 +85,10 @@ func (c *Client) loadMap(mapName string) error {
 		time.Sleep(time.Millisecond * 50)
 	}
 
-	c.do(fmt.Sprintf("map %s", mapName), 3*time.Second)
+	c.doForDuration(fmt.Sprintf("map %s", mapName), 3*time.Second)
 	return nil
 }
 
-func (c *Client) do(cmd string, timeout time.Duration) {
+func (c *Client) doForDuration(cmd string, timeout time.Duration) {
 	c.controller.CommandWithOptions(cmd, ezquake.CommandOptions{Block: timeout})
 }
