@@ -34,6 +34,8 @@ func (c *Client) Mapshots(mapNames []string, settings MapSettings) error {
 
 	log.Println("mapnames = ", mapNames)
 
+	c.doForDuration("vid_restart", 2*time.Second)
+
 	for _, mapName := range mapNames {
 		if !settings.HasMap(mapName) {
 			log.Println("skipping map", mapName)
