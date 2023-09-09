@@ -8,30 +8,25 @@ Uses an ezQuake client to cycle through maps, load camera settings and then take
 
 * Unix build of [ezQuake](https://github.com/ezQuake/ezquake-source)
 * `.env` (copy `.env.example` and set values)
-* `map_settings.json` - Settings per map
+* `map_settings.json` - Settings per map.
+
+For more map settings, see [map_settings.json](https://github.com/vikpe/qw-mapshots/blob/main/configs/map_settings.json)
+in the [qw-mapshots](https://github.com/vikpe/qw-mapshots) repo.
 
 ## Usage
 
 ```shell
-automapshot [<maps> ...]
-```
+# all maps defined in map_settings.json
+automapshot all
 
-### Specific maps
-
-```shell
+# specific maps
 automapshot dm2
 automapshot dm2 dm4 dm6
 ```
 
-### All maps
+## Tips
 
-Create mapshot for all maps defined in `map_settings.json`.
-
-```shell
-automapshot all
-```
-
-## How to create thumbnails
+### Creating thumbnails
 
 ```shell
  mkdir thumbs
