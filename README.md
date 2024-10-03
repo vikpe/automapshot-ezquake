@@ -1,3 +1,8 @@
+# DEPRECATED
+**This project is no longer maintained**, please consider using [automapshot-fte](https://github.com/vikpe/automapshot-fte) instead.
+
+---
+
 # automapshot
 
 > Automate screenshots of QuakeWorld maps.
