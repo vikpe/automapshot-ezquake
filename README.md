@@ -2,7 +2,7 @@
 
 > Automate screenshots of QuakeWorld maps.
 
-Uses an ezQuake client to cycle through maps, load camera settings and then take screenshots.
+Uses an ezQuake client to cycle through maps, load camera settings and take screenshots.
 
 ## Requirements
 
@@ -34,6 +34,6 @@ automapshot dm2 dm4 dm6
  ```
 
 ## Related projects
-
+* [Automapshot FTE](https://github.com/vikpe/automapshot-fte)
 * [QuakeWorld Mapshots](https://github.com/vikpe/qw-mapshots)
 * [QuakeWorld Hub](https://github.com/quakeworldnu/hub.quakeworld.nu) 
